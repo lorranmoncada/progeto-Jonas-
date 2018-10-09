@@ -1,0 +1,118 @@
+<nav class="navbar navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">
+    <img style="margin-right: 17px;" src="../../assets/img/balanca.png" width="55" height="55" class="d-inline-block align-top"
+      alt="">
+    <span class="logo">Clientes</span>
+  </a>
+</nav>
+<div class="container-fluid">
+  <div>
+    <h1 class="col-md-5 espaço ">Adicionar cliente</h1>
+  </div>
+
+  <form [formGroup]="formulario" (ngSubmit)="onSubmit(formulario)" class="teste">
+   
+    <div class="form-row espaço">
+      <div class="form-group col-md-2" >
+        <label for="processo">Processo</label>
+        <input type="text" class="form-control" placeholder="Processo" formControlName="processo" [ngClass]="aplicarCssErro('processo')">
+        <app-campo-control-erro [mostrarErro]="verificaValidTouched('processo')" msgErro="Campo obrigatório"></app-campo-control-erro>
+      </div>
+      <div class="form-group col-md-5">
+        <label for="inputPassword4">Reclamante</label>
+        <input type="text" class="form-control" id="reclamanteId" placeholder="Reclamante" formControlName="reclamante">
+      </div>
+      <div class="form-group col-md-5">
+        <label for="inputAddress">Reclamada</label>
+        <input type="text" class="form-control" id="reclamadaId" placeholder="Reclamada" formControlName="reclamada">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-2">
+        <label for="inputAddress2">Valor</label>
+        <input type="number" class="form-control" id="valorId" placeholder="Valor" formControlName="valor">
+      </div>
+
+      <div class="form-group col-md-2">
+        <label for="inputCity">Parcelado em</label>
+        <input type="number" class="form-control" id="nparcelasId" placeholder="Número de parcelas" formControlName="nparcelas">
+      </div>
+      <div class="form-group col-md-2">
+        <label for="inputState">Parcelas</label>
+        <input type="number" class="form-control" id="parcelasId" placeholder="Parcelas" formControlName="parcelas">
+      </div>
+      <div class="form-group col-md-2">
+        <label for="inputZip">Vencimento</label>
+        <input type="text" class="form-control" id="vencimentoId" placeholder="Vencimento" formControlName="vencimento">
+      </div>
+      <div class="form-group col-md-2">
+        <label for="inputZip">Status do pagamento</label>
+        <select class="form-control" placeholder="Status" formControlName="select" id="selectId" ngModel>
+          <option disabled>Status...</option>
+          <option value="pago">Pago</option>
+          <option value="debito">Débito</option>
+        </select>
+      </div>
+      <div class="form-group col-md-2">
+        <label for="inputZip">Tipo</label>
+        <select class="form-control" placeholder="Tipo" formControlName="select2" ngModel id="topoId">
+          <option disabled>Tipo...</option>
+          <option value="1">Trabalhista</option>
+          <option value="2">Penal</option>
+          <option value="3">Civil</option>
+        </select>
+      </div>
+    </div>
+   
+    <button type="submit" class="btn btn-secondary" style="margin-bottom:10px;">Cadastrar</button>
+
+  </form>
+
+
+
+
+
+  <div class="row justify-content-center espaçopesquisar">
+    <div class="col-4 pt3">
+      <input [(ngModel)]="pesquisar" placeholder="pesquisar..." class="form-control" type="text">
+    </div>
+  </div>
+
+  <div>
+    <h1 class="col-md-5 espaço">Trabalhista</h1>
+  </div>
+
+  <!-- Tabela Trabalhista -->
+  <div class="table-responsive-sm">
+    <table class="table table-bordered">
+      <thead class="thead-light">
+        <tr>
+          <th class="alinhar" scope="col">Processo</th>
+          <th class="alinhar" scope="col">Reclamante</th>
+          <th class="alinhar" scope="col">Reclamada</th>
+          <th class="alinhar" scope="col">Valor</th>
+          <th class="alinhar" scope="col">Parcelado em</th>
+          <th class="alinhar" scope="col">Parcelas</th>
+          <th class="alinhar" scope="col">Vencimento</th>
+          <th class="alinhar" scope="col">Status de Pagamento</th>
+          <th class="alinhar" scope="col">Tipo</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let cliente of listaClientes | pesquisarFilter:pesquisar">
+          <th class="alinhar">{{cliente.processo}}</th>
+          <th class="alinhar">{{cliente.reclamante}}</th>
+          <th class="alinhar">{{cliente.reclamada}}</th>
+          <th class="alinhar">{{cliente.valor}}</th>
+          <th class="alinhar">{{cliente.parcelado}}</th>
+          <th class="alinhar">{{cliente.parcelas}}</th>
+          <th class="alinhar">{{cliente.vencimento}}</th>
+          <th class="alinhar">{{cliente.status}}</th>
+          <th class="alinhar">{{cliente.tipo}}</th>
+        </tr>
+      </tbody>
+
+    </table>
+  </div>
+</div>
