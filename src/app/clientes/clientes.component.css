@@ -22,3 +22,11 @@ text-align: center;
 .has-error{
     border: 1px solid red;
 }
+
+
+.show-more {
+    cursor: pointer;
+    padding-top: 0.5rem;
+    padding-bottom: 0.2rem;
+    display: block;
+}

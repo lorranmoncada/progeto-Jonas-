@@ -8,5 +8,6 @@ export class ClientesModel {
     vencimento: string;
     status: string;
     tipo: string;
+    /* isShowMore: boolean; */
 
 }

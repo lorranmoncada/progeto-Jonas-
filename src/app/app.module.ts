@@ -8,13 +8,16 @@ import { ClientesserviceService } from './clientes/clientesservice.service';
 import { HttpClientModule } from '@angular/common/http';
 import { PesquisarFilterPipe } from './pipes/pesquisar.pipe';
 import { CampoControlErroComponent } from './campo-control-erro/campo-control-erro.component';
+import { CadClientesComponent } from './clientes/cad-clientes/cad-clientes.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     ClientesComponent,
     PesquisarFilterPipe,
-    CampoControlErroComponent
+    CampoControlErroComponent,
+    CadClientesComponent,
   ],
   imports: [
     BrowserModule,
