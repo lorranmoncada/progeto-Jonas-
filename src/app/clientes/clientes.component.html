@@ -31,14 +31,14 @@
           <h5 class="mb-1">{{cliente.processo}}</h5>
           <small >{{cliente.tipo}}</small>
         </div>
-        <p class="mb-1">Reclamante: {{cliente.reclamante}}</p>
-        <p class="mb-1">Reclamada: {{cliente.reclamada}}</p>
+        <p class="mb-1"><span class="color">Reclamante:</span> {{cliente.reclamante}}</p>
+        <p class="mb-1"><span class="color">Reclamada:</span> {{cliente.reclamada}}</p>
         <div *ngIf="cliente.isShowMore">
-          <p class="mb-1">Valor: {{cliente.valor}}</p>
-          <p class="mb-1">Parcelamento: {{cliente.parcelado}}</p>
-          <p class="mb-1">Número de Parcelas: {{cliente.parcelas}}</p>
-          <p class="mb-1">Vencimento: {{cliente.vencimento}}</p>
-          <p class="mb-1">Status: {{cliente.status}}</p>
+          <p class="mb-1"><span class="color">Valor: </span>{{cliente.valor}}</p>
+          <p class="mb-1"><span class="color">Parcelamento:</span> {{cliente.parcelado}}</p>
+          <p class="mb-1"><span class="color">Número de Parcelas: </span>{{cliente.parcelas}}</p>
+          <p class="mb-1"><span class="color">Vencimento: </span>{{cliente.vencimento}}</p>
+          <p class="mb-1"><span class="color">Status: </span>{{cliente.status}}</p>
         </div>
         <span class="show-more">
           <a (click)="cliente.isShowMore = !cliente.isShowMore">{{!cliente.isShowMore? 'ver mais' : 'ver menos'}}</a>
