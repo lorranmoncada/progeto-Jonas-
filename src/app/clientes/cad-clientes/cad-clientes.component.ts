@@ -55,10 +55,10 @@ return !this.formulario.get(campo).valid && this.formulario.get(campo).touched;
         'has-error': this.verificaValidTouched(campo),
         'has-feedback': this.verificaValidTouched(campo)
       };
-
-
   }
-
+  voltarPagina() {
+this.cadastro = true;
+  }
 
 }
 

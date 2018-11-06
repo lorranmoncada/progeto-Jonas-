@@ -11,7 +11,7 @@ export class ClientesComponent implements OnInit {
 
   listaClientes: ClientesModel[];
   pesquisar: string;
-  isShowMore: boolean;
+  /* isShowMore: boolean; */
   objCliente: ClientesModel;
   cadastroCliente: boolean;
 
@@ -34,12 +34,12 @@ export class ClientesComponent implements OnInit {
       vencimento: new FormControl(null)
     }); */
 
-    this.isShowMore = false;
+    /* this.isShowMore = false; */
     this.cadastroCliente = false;
   }
-
+/*
   showMoreInfo(isShowMore: any) {
-    /*  isShowMore = isShowMore ? false : true; */
+    isShowMore = isShowMore ? false : true;
 
     if (this.isShowMore === false) {
       this.isShowMore = true;
@@ -47,7 +47,7 @@ export class ClientesComponent implements OnInit {
       this.isShowMore = false;
     }
   }
-
+ */
 
   novoCliente() {
     this.objCliente = {

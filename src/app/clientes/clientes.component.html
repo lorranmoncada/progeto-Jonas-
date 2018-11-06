@@ -1,4 +1,4 @@
-<div *ngIf = "!this.cadastroCliente">
+<div *ngIf="!this.cadastroCliente">
   <nav class="navbar navbar-dark bg-dark">
     <a class="navbar-brand" href="#">
       <img style="margin-right: 17px;" src="../../assets/img/balanca.png" width="55" height="55" class="d-inline-block align-top"
@@ -8,11 +8,8 @@
   </nav>
   <div class="container-fluid">
 
-
-
-
+    <!-- Input de pesquisa de processos -->
     <div class="row espaçopesquisar">
-
       <div class="col-2 pt-2 pb-4">
         <input [(ngModel)]="pesquisar" placeholder="pesquisar..." class="form-control" type="text">
       </div>
@@ -24,60 +21,35 @@
       <div class="col-1 pt-2 pb-4 ">
         <button type="button" class="btn btn-secondary">exportar</button>
       </div>
-
-
     </div>
 
-
+    <!-- Lista de Clientes -->
     <div class="list-group">
 
-
-      <a class="list-group-item list-group-item-action flex-column align-items-start" *ngFor="let cliente of listaClientes | pesquisarFilter:pesquisar">
+      <a class="list-group-item list-group-item-action flex-column align-items-start"  *ngFor="let cliente of listaClientes | pesquisarFilter:pesquisar">
         <div class="d-flex w-100 justify-content-between">
           <h5 class="mb-1">{{cliente.processo}}</h5>
-          <small>{{cliente.tipo}}</small>
+          <small >{{cliente.tipo}}</small>
         </div>
         <p class="mb-1">Reclamante: {{cliente.reclamante}}</p>
         <p class="mb-1">Reclamada: {{cliente.reclamada}}</p>
-
         <div *ngIf="cliente.isShowMore">
-          <p class="mb-1">Reclamante: {{cliente.reclamante}}</p>
-          <p class="mb-1">Reclamada: {{cliente.reclamada}}</p>
           <p class="mb-1">Valor: {{cliente.valor}}</p>
           <p class="mb-1">Parcelamento: {{cliente.parcelado}}</p>
           <p class="mb-1">Número de Parcelas: {{cliente.parcelas}}</p>
           <p class="mb-1">Vencimento: {{cliente.vencimento}}</p>
           <p class="mb-1">Status: {{cliente.status}}</p>
         </div>
-
         <span class="show-more">
           <a (click)="cliente.isShowMore = !cliente.isShowMore">{{!cliente.isShowMore? 'ver mais' : 'ver menos'}}</a>
         </span>
       </a>
-    </div>
 
-    <!-- 
-
-<div class="list-group" *ngIf="this.isShowMore">
-  <a  class="list-group-item list-group-item-action flex-column align-items-start" *ngFor="let cliente of listaClientes | pesquisarFilter:pesquisar">
-    <div class="d-flex w-100 justify-content-between" >
-      <h5 class="mb-1">{{cliente.processo}}</h5>
-      <small>{{cliente.tipo}}</small>
     </div>
-    <p class="mb-1">Reclamante: {{cliente.reclamante}}</p>
-    <p class="mb-1">Reclamada: {{cliente.reclamada}}</p>
-    <p class="mb-1">Valor: {{cliente.valor}}</p>
-    <p class="mb-1">Parcelamento: {{cliente.parcelado}}</p>
-    <p class="mb-1">Número de Parcelas: {{cliente.parcelas}}</p>
-    <p class="mb-1">Vencimento: {{cliente.vencimento}}</p>
-    <p class="mb-1">Status: {{cliente.status}}</p>
-    
-    
-    <span class="show-more" *ngIf="this.isShowMore == true">
-      <a (click)="showMoreInfo(this.isShowMore)">ver menos</a>
-    </span>
-  </a>
-</div> -->
   </div>
 </div>
+
+
+
+<!-- Cadastro de clientes -->
 <app-cad-clientes *ngIf="this.cadastroCliente" [cadClientes]="this.objCliente"></app-cad-clientes>
