@@ -12,11 +12,8 @@ export class ClientesComponent implements OnInit {
   listaClientes: ClientesModel[];
   pesquisar: string;
   isShowMore: boolean;
-
-
-
-
-
+  objCliente: ClientesModel;
+  cadastroCliente: boolean;
 
   constructor(private clientesService: ClientesserviceService) { }
 
@@ -38,6 +35,7 @@ export class ClientesComponent implements OnInit {
     }); */
 
     this.isShowMore = false;
+    this.cadastroCliente = false;
   }
 
   showMoreInfo(isShowMore: any) {
@@ -48,5 +46,21 @@ export class ClientesComponent implements OnInit {
     } else {
       this.isShowMore = false;
     }
+  }
+
+
+  novoCliente() {
+    this.objCliente = {
+      processo: null,
+      reclamante: null,
+      reclamada: null,
+      valor: 0,
+      parcelado: 0,
+      parcelas: 0,
+      vencimento: null,
+      status: null,
+      tipo: null
+    };
+    this.cadastroCliente = true;
   }
 }

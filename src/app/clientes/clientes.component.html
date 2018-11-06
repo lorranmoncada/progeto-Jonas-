@@ -1,118 +1,83 @@
-<nav class="navbar navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">
-    <img style="margin-right: 17px;" src="../../assets/img/balanca.png" width="55" height="55" class="d-inline-block align-top"
-      alt="">
-    <span class="logo">Clientes</span>
-  </a>
-</nav>
-<div class="container-fluid">
+<div *ngIf = "!this.cadastroCliente">
+  <nav class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">
+      <img style="margin-right: 17px;" src="../../assets/img/balanca.png" width="55" height="55" class="d-inline-block align-top"
+        alt="">
+      <span class="logo">Clientes</span>
+    </a>
+  </nav>
+  <div class="container-fluid">
 
 
 
 
-  <div class="row espaçopesquisar">
-    
-    <div class="col-2 pt-2 pb-4">
-      <input [(ngModel)]="pesquisar" placeholder="pesquisar..." class="form-control" type="text">
+    <div class="row espaçopesquisar">
+
+      <div class="col-2 pt-2 pb-4">
+        <input [(ngModel)]="pesquisar" placeholder="pesquisar..." class="form-control" type="text">
+      </div>
+
+      <div class="col-1 pt-2 pb-4 ">
+        <button type="button" class="btn btn-secondary" (click)="novoCliente()">+ cadastrar</button>
+      </div>
+
+      <div class="col-1 pt-2 pb-4 ">
+        <button type="button" class="btn btn-secondary">exportar</button>
+      </div>
+
+
     </div>
 
-    <div class="col-1 pt-2 pb-4 ">
-      <button type="button" class="btn btn-secondary">+ cadastrar</button>
+
+    <div class="list-group">
+
+
+      <a class="list-group-item list-group-item-action flex-column align-items-start" *ngFor="let cliente of listaClientes | pesquisarFilter:pesquisar">
+        <div class="d-flex w-100 justify-content-between">
+          <h5 class="mb-1">{{cliente.processo}}</h5>
+          <small>{{cliente.tipo}}</small>
+        </div>
+        <p class="mb-1">Reclamante: {{cliente.reclamante}}</p>
+        <p class="mb-1">Reclamada: {{cliente.reclamada}}</p>
+
+        <div *ngIf="cliente.isShowMore">
+          <p class="mb-1">Reclamante: {{cliente.reclamante}}</p>
+          <p class="mb-1">Reclamada: {{cliente.reclamada}}</p>
+          <p class="mb-1">Valor: {{cliente.valor}}</p>
+          <p class="mb-1">Parcelamento: {{cliente.parcelado}}</p>
+          <p class="mb-1">Número de Parcelas: {{cliente.parcelas}}</p>
+          <p class="mb-1">Vencimento: {{cliente.vencimento}}</p>
+          <p class="mb-1">Status: {{cliente.status}}</p>
+        </div>
+
+        <span class="show-more">
+          <a (click)="cliente.isShowMore = !cliente.isShowMore">{{!cliente.isShowMore? 'ver mais' : 'ver menos'}}</a>
+        </span>
+      </a>
     </div>
 
-    <div class= "col-1 pt-2 pb-4 ">
-      <button type="button" class="btn btn-secondary">exportar</button>
-    </div>
-
-   
-  </div>
-
-  <!-- <div>
-    <h1 class="col-md-5 espaço">Trabalhista</h1>
-  </div> -->
-
-  <!-- Tabela Trabalhista -->
- <!--  <div class="table-responsive-sm">
-    <table class="table table-bordered">
-      <thead class="thead-light">
-        <tr>
-          <th class="alinhar" scope="col">Processo</th>
-          <th class="alinhar" scope="col">Reclamante</th>
-          <th class="alinhar" scope="col">Reclamada</th>
-          <th class="alinhar" scope="col">Valor</th>
-          <th class="alinhar" scope="col">Parcelado em</th>
-          <th class="alinhar" scope="col">Parcelas</th>
-          <th class="alinhar" scope="col">Vencimento</th>
-          <th class="alinhar" scope="col">Status de Pagamento</th>
-          <th class="alinhar" scope="col">Tipo</th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <tr *ngFor="let cliente of listaClientes | pesquisarFilter:pesquisar">
-          <th class="alinhar">{{cliente.processo}}</th>
-          <th class="alinhar">{{cliente.reclamante}}</th>
-          <th class="alinhar">{{cliente.reclamada}}</th>
-          <th class="alinhar">{{cliente.valor}}</th>
-          <th class="alinhar">{{cliente.parcelado}}</th>
-          <th class="alinhar">{{cliente.parcelas}}</th>
-          <th class="alinhar">{{cliente.vencimento}}</th>
-          <th class="alinhar">{{cliente.status}}</th>
-          <th class="alinhar">{{cliente.tipo}}</th>
-        </tr>
-      </tbody>
-
-    </table>
-  </div> -->
-<!-- <div>
-  <ul class="list-group" *ngFor="let cliente of listaClientes | pesquisarFilter:pesquisar">
-    <li class="list-group-item">processo: {{cliente.processo}}</li>
-  </ul>
-</div> -->
-
-
-
-<div class="list-group" *ngIf="!this.isShowMore">
-  
-   
-  <a  class="list-group-item list-group-item-action flex-column align-items-start" *ngFor="let cliente of listaClientes | pesquisarFilter:pesquisar">
-    <div class="d-flex w-100 justify-content-between" >
-      <h5 class="mb-1">{{cliente.processo}}</h5>
-      <!-- <small>3 days ago</small> -->
-    </div>
-    <p class="mb-1">Reclamante: {{cliente.reclamante}}</p>
-    <p class="mb-1">Reclamada: {{cliente.reclamada}}</p>
-
-    <span class="show-more" *ngIf="this.isShowMore == false">
-      <a (click)="showMoreInfo(this.isShowMore)">ver mais</a>
-    </span>
-  </a>
-</div>
-
-
+    <!-- 
 
 <div class="list-group" *ngIf="this.isShowMore">
   <a  class="list-group-item list-group-item-action flex-column align-items-start" *ngFor="let cliente of listaClientes | pesquisarFilter:pesquisar">
     <div class="d-flex w-100 justify-content-between" >
       <h5 class="mb-1">{{cliente.processo}}</h5>
-      <!-- <small>3 days ago</small> -->
+      <small>{{cliente.tipo}}</small>
     </div>
     <p class="mb-1">Reclamante: {{cliente.reclamante}}</p>
     <p class="mb-1">Reclamada: {{cliente.reclamada}}</p>
     <p class="mb-1">Valor: {{cliente.valor}}</p>
     <p class="mb-1">Parcelamento: {{cliente.parcelado}}</p>
-    <p class="mb-1">Npumero de Parcelas: {{cliente.parcelas}}</p>
+    <p class="mb-1">Número de Parcelas: {{cliente.parcelas}}</p>
     <p class="mb-1">Vencimento: {{cliente.vencimento}}</p>
     <p class="mb-1">Status: {{cliente.status}}</p>
-    <small>{{cliente.tipo}}</small> 
+    
     
     <span class="show-more" *ngIf="this.isShowMore == true">
       <a (click)="showMoreInfo(this.isShowMore)">ver menos</a>
     </span>
   </a>
+</div> -->
+  </div>
 </div>
-
-
-
-</div>
-
+<app-cad-clientes *ngIf="this.cadastroCliente" [cadClientes]="this.objCliente"></app-cad-clientes>

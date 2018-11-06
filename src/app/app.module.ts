@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { PesquisarFilterPipe } from './pipes/pesquisar.pipe';
 import { CampoControlErroComponent } from './campo-control-erro/campo-control-erro.component';
 import { CadClientesComponent } from './clientes/cad-clientes/cad-clientes.component';
+/* import { CommonModule } from '@angular/common'; */
 
 
 @NgModule({
@@ -24,7 +25,12 @@ import { CadClientesComponent } from './clientes/cad-clientes/cad-clientes.compo
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule
+  /*   CommonModule */
   ],
+  exports: [
+    ClientesComponent
+  ],
+ /*  entryComponents: [ClientesComponent], */
   providers: [ClientesserviceService],
   bootstrap: [AppComponent]
 })

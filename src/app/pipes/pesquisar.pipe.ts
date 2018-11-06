@@ -11,9 +11,8 @@ export class PesquisarFilterPipe implements PipeTransform {
         }
 
         return nome.filter(objVideo =>
-            objVideo.reclamante.indexOf(pesquisar.toUpperCase()) >= 0);
+            objVideo.processo.indexOf(pesquisar.toUpperCase()) >= 0);
     }
-
 
 
 }

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { ClientesModel } from './../clientes.model';
+import { Component, OnInit, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { stringify } from '@angular/core/src/util';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
@@ -12,6 +13,9 @@ export class CadClientesComponent implements OnInit {
 
 
   formulario: FormGroup;
+  cadastro: boolean;
+  @Input() cadClientes: ClientesModel;
+
 
   constructor(private formBuilder: FormBuilder, private http: HttpClient) { }
 
