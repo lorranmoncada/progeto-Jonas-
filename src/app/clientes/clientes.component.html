@@ -15,11 +15,11 @@
       </div>
 
       <div class="col-1 pt-2 pb-4 ">
-        <button type="button" class="btn btn-secondary" (click)="novoCliente()">+ cadastrar</button>
+        <button type="button" class="btn btn-secondary" (click)="novoCliente()"><i class="fa fa-plus" aria-hidden="true"></i><span class="v">Cadastrar </span></button>
       </div>
 
       <div class="col-1 pt-2 pb-4 ">
-        <button type="button" class="btn btn-secondary">exportar</button>
+        <button type="button" class="btn btn-secondary"><i class="fa fa-file-o" aria-hidden="true"></i><span class="v">Exportar</span></button>
       </div>
     </div>
 
@@ -53,4 +53,3 @@
 
 <!-- Cadastro de clientes -->
 <app-cad-clientes *ngIf="this.cadastroCliente" [cadClientes]="this.objCliente"></app-cad-clientes>
-

@@ -79,10 +79,10 @@
 
       <div class="row">
         <div class="col-md-1">
-          <button type="submit" class="btn btn-secondary" style="margin-bottom:10px;">Cadastrar</button>
+          <button type="submit" [class.valid]="!formulario.valid" [disabled]="!formulario.valid" class="btn btn-secondary" style="margin-bottom:10px;"><i class="fa fa-file" aria-hidden="true"></i><span class="v">Salvar</span></button>
         </div>
         <div class="col-md-1">
-          <button type="button" class="btn btn-secondary" style="margin-bottom:10px;" (click)="voltarPagina()">Voltar</button>
+          <button type="button" class="btn btn-secondary" style="margin-bottom:10px;" (click)="voltarPagina()"><i class="fa fa-reply" ></i><span class="v">Voltar</span></button>
         </div>
       </div>
     </form>
