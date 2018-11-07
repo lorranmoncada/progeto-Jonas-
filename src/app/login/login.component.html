@@ -1,32 +1,32 @@
 <div *ngIf="!login">
-    <nav class="navbar navbar-dark bg-dark">
-      <a class="navbar-brand" href="#">
-        <img style="margin-right: 17px;" src="../../assets/img/balanca.png" width="55" height="55" class="d-inline-block align-top"
-          alt="">
-        <span class="logo">ADD Service</span>
-      </a>
-    </nav>
-  
-    <div class="container espaço">
-      
-   
-        <div class="form-group">
-          <label for="exampleInputEmail1">Email</label>
-          <input type="email" class="form-control" id="exampleInputEmail1" [(ngModel)]="email" aria-describedby="emailHelp" placeholder="Digite seu e-mail">
-        </div>
-        <div class="form-group">
-          <label for="exampleInputPassword1">Senha</label>
-          <input type="password" class="form-control" id="exampleInputPassword1" [(ngModel)]="senha" placeholder="Digite sua senha">
-        </div>
-  
-        <button type="submit" (click)="sumirLogin()" class="btn btn-secondary">Login</button>
-    
-  
+  <nav class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">
+      <img style="margin-right: 17px;" src="../../assets/img/balanca.png" width="55" height="55" class="d-inline-block align-top"
+        alt="">
+      <span class="logo">ADD Service</span>
+    </a>
+  </nav>
+
+  <div class="container espaço col-md-4" style="border: 1px solid;border-color:#cecece;padding: 35px;">
+
+
+    <div class="form-group ">
+      <label for="exampleInputEmail1">Login</label>
+      <input type="email" class="form-control" id="exampleInputEmail1" [(ngModel)]="email" aria-describedby="emailHelp"
+        placeholder="DIGITE AQUI SEU USUARIO OU E-MAIL">
     </div>
-  
+    <div class="form-group">
+      <label for="exampleInputPassword1">Senha</label>
+      <input type="password" class="form-control" id="exampleInputPassword1" [(ngModel)]="senha" placeholder="DIGITE AQUI SUA">
+    </div>
+
+    <button type="submit" (click)="sumirLogin()" class="btn btn-secondary">Login</button>
+
+
   </div>
-  
-  <div *ngIf="login">
-  <app-clientes></app-clientes> 
-  </div>
-  
+
+</div>
+
+<div *ngIf="login">
+  <app-clientes></app-clientes>
+</div>

@@ -7,20 +7,20 @@
     </a>
   </nav>
   <div class="container-fluid">
-
+      <i class="fa fa-sign-out" aria-hidden="true" style="display: block;margin-left: auto;width: 200px"></i>
     <!-- Input de pesquisa de processos -->
     <div class="row espaçopesquisar">
       <div class="col-md-4 pb-3 mb-3">
         <input [(ngModel)]="pesquisar" placeholder="pesquisar..." class="form-control" type="text">
       </div>
 
-      <div class="col-md-1 col-sm-5">
-        <button type="button" class="btn btn-secondary" (click)="novoCliente()"><i class="fa fa-plus" aria-hidden="true"></i><span
+      <div class="col-md-1 col-sm-5 mb-2 mt-1">
+        <button type="button" class="btn btn-secondary btn-sm" (click)="novoCliente()"><i class="fa fa-plus" aria-hidden="true"></i><span
             class="v">Cadastrar </span></button>
       </div>
 
-      <div class="col-md-1 col-sm-5">
-        <button type="button" class="btn btn-secondary"><i class="fa fa-file-o" aria-hidden="true"></i><span class="v">Exportar</span></button>
+      <div class="col-md-1 col-sm-5 mb-2 mt-1">
+        <button type="button" class="btn btn-secondary btn-sm"><i class="fa fa-file-o" aria-hidden="true"></i><span class="v">Exportar</span></button>
       </div>
     </div>
 
@@ -30,8 +30,8 @@
       <a class="list-group-item list-group-item-action flex-column align-items-start" *ngFor="let cliente of listaClientes | pesquisarFilter:pesquisar">
         <div class="d-flex w-100 justify-content-between">
           <h5 class="mb-1">{{cliente.processo}}</h5>
-         <!--  <small>{{cliente.tipo}}</small> -->
-          <span class="badge badge-info bedge">{{cliente.tipo}}</span>
+        <small>{{cliente.tipo}}</small> 
+       
         </div>
         <p class="mb-1"><span class="color">Reclamante:</span> {{cliente.reclamante}}</p>
         <p class="mb-1"><span class="color">Reclamada:</span> {{cliente.reclamada}}</p>

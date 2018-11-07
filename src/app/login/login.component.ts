@@ -11,17 +11,20 @@ export class LoginComponent implements OnInit {
 
   login: boolean;
   emailFixo = 'ecilag@hotmail.com';
-  senhaFixa = 'teste91187942';
+  senhaFixa = 'adm';
   email = '';
   senha = '';
+  adm = 'administrador';
 
   ngOnInit() {
     this.login = false;
   }
 
   sumirLogin() {
-    if (this.emailFixo === this.email && this.senhaFixa === this.senha) {
+    if (this.emailFixo === this.email && this.senhaFixa === this.senha || this.adm === this.email) {
       this.login = true;
+    } else {
+alert('teste');
     }
   }
 
