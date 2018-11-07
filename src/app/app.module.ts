@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { PesquisarFilterPipe } from './pipes/pesquisar.pipe';
 import { CampoControlErroComponent } from './campo-control-erro/campo-control-erro.component';
 import { CadClientesComponent } from './clientes/cad-clientes/cad-clientes.component';
+import { LoginComponent } from './login/login.component';
 /* import { CommonModule } from '@angular/common'; */
 
 
@@ -21,6 +22,7 @@ import { CadClientesComponent } from './clientes/cad-clientes/cad-clientes.compo
     PesquisarFilterPipe,
     CampoControlErroComponent,
     CadClientesComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,

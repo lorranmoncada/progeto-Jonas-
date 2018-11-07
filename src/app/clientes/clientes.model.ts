@@ -5,7 +5,7 @@ export class ClientesModel {
     valor: number;
     parcelado: number;
     parcelas: number;
-    vencimento: string;
+    vencimento: Date;
     status: string;
     tipo: string;
     isShowMore?: boolean;
