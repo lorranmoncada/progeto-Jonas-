@@ -3,6 +3,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { stringify } from '@angular/core/src/util';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import { ClientesserviceService } from '../clientesservice.service';
 
 @Component({
   selector: 'app-cad-clientes',
@@ -14,22 +15,30 @@ export class CadClientesComponent implements OnInit {
 
   formulario: FormGroup;
   cadastro: boolean;
+  reusultado: number;
 
   @Input() cadClientes: ClientesModel;
 
 
-  constructor(private formBuilder: FormBuilder, private http: HttpClient) { }
+  constructor(private formBuilder: FormBuilder, private http: HttpClient, private clientesService: ClientesserviceService) { }
 
   ngOnInit() {
 
     this.createForm();
+    console.log(this.cadClientes.processo);
 
   }
 
   onSubmit(formulario) {
-    this.http.post('https://httpbin.org/post', formulario.value).subscribe(dados => {
-      console.log(formulario);
-    }, (error: any) => alert('erro'));
+    if (this.cadClientes.idProcesso) {
+      this.clientesService.editarCliente(formulario.value).subscribe(data => {
+        console.log(data);
+      });
+    } else {
+      this.clientesService.cadastrarCliente(formulario.value).subscribe(data => {
+        console.log(data);
+      });
+    }
 
     /*  this.resetar(); */
   }
@@ -57,17 +66,18 @@ export class CadClientesComponent implements OnInit {
 
   createForm() {
     this.formulario = this.formBuilder.group({
-      processo: [null, Validators.required],
-      reclamante: [null, Validators.required],
-      reclamada: [null, Validators.required],
-      valor: [null, Validators.required],
-      nparcelas: [null, Validators.required],
-      /*   parcelas: [null, Validators.required], */
-      vencimento: [null, Validators.required],
-      select: [0, Validators.required],
-      select2: [0, Validators.required]
+      processo: [this.cadClientes.processo, Validators.required],
+      reclamante: [this.cadClientes.reclamante, Validators.required],
+      reclamada: [this.cadClientes.reclamada, Validators.required],
+      valor: [this.cadClientes.valor, Validators.required],
+      parcelas: [this.cadClientes.parcelas, Validators.required],
+      vencimento: [this.cadClientes.vencimento, Validators.required],
+      tipo: [this.cadClientes.tipo, Validators.required],
+      status: [this.cadClientes.status, Validators.required]
     });
   }
+
+
 
 }
 

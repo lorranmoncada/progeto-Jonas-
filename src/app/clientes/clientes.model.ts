@@ -1,4 +1,5 @@
 export class ClientesModel {
+    idProcesso?: number;
     processo: string;
     reclamante: string;
     reclamada: string;

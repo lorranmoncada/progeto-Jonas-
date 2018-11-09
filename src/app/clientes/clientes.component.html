@@ -1,58 +1,65 @@
-<div *ngIf="!this.cadastroCliente">
-  <nav class="navbar navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">
-      <img style="margin-right: 17px;" src="../../assets/img/balanca.png" width="55" height="55" class="d-inline-block align-top"
-        alt="">
-      <span class="logo">Clientes</span>
-    </a>
-  </nav>
-  <div class="container-fluid">
-      <i class="fa fa-sign-out" aria-hidden="true" style="display: block;margin-left: auto;width: 200px"></i>
-    <!-- Input de pesquisa de processos -->
-    <div class="row espaçopesquisar">
-      <div class="col-md-4 pb-3 mb-3">
-        <input [(ngModel)]="pesquisar" placeholder="pesquisar..." class="form-control" type="text">
-      </div>
-
-      <div class="col-md-1 col-sm-5 mb-2 mt-1">
-        <button type="button" class="btn btn-secondary btn-sm" (click)="novoCliente()"><i class="fa fa-plus" aria-hidden="true"></i><span
-            class="v">Cadastrar </span></button>
-      </div>
-
-      <div class="col-md-1 col-sm-5 mb-2 mt-1">
-        <button type="button" class="btn btn-secondary btn-sm"><i class="fa fa-file-o" aria-hidden="true"></i><span class="v">Exportar</span></button>
-      </div>
-    </div>
-
-    <!-- Lista de Clientes -->
-    <div class="list-group">
-
-      <a class="list-group-item list-group-item-action flex-column align-items-start" *ngFor="let cliente of listaClientes | pesquisarFilter:pesquisar">
-        <div class="d-flex w-100 justify-content-between">
-          <h5 class="mb-1">{{cliente.processo}}</h5>
-        <small>{{cliente.tipo}}</small> 
-       
-        </div>
-        <p class="mb-1"><span class="color">Reclamante:</span> {{cliente.reclamante}}</p>
-        <p class="mb-1"><span class="color">Reclamada:</span> {{cliente.reclamada}}</p>
-        <div *ngIf="cliente.isShowMore">
-          <p class="mb-1"><span class="color">Valor: </span>{{cliente.valor}}</p>
-          <p class="mb-1"><span class="color">Parcelamento:</span> {{cliente.parcelado}}</p>
-          <p class="mb-1"><span class="color">Número de Parcelas: </span>{{cliente.parcelas}}</p>
-          <p class="mb-1"><span class="color">Vencimento: </span>{{cliente.vencimento}}</p>
-          <p class="mb-1"><span class="color">Status: </span>{{cliente.status}}</p>
-        </div>
-        <span class="show-more">
-          <a (click)="cliente.isShowMore = !cliente.isShowMore">{{!cliente.isShowMore? 'ver mais' : 'ver menos'}}</a>
-
-        </span>
+<div *ngIf="!teste">
+  <div *ngIf="!cadastroCliente">
+    <nav class="navbar navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">
+        <img style="margin-right: 17px;" src="../../assets/img/balanca.png" width="55" height="55" class="d-inline-block align-top"
+          alt="">
+        <span class="logo">Clientes</span>
       </a>
+    </nav>
+    <div class="container-fluid">
+      <i class="fa fa-sign-out" (click)="deslogar()" aria-hidden="true" style="display: block;margin-left: auto;width: 40px;font-size: 30px;"></i>
+      <!-- Input de pesquisa de processos -->
+      <div class="row espaçopesquisar">
+        <div class="col-md-4 pb-3 mb-3">
+          <input [(ngModel)]="pesquisar" placeholder="pesquisar..." class="form-control" type="text">
+        </div>
 
+        <div class="col-md-1 col-sm-5 mb-2 mt-1">
+          <button type="button" class="btn btn-secondary btn-sm" (click)="novoCliente()"><i class="fa fa-plus"
+              aria-hidden="true"></i><span class="v">Cadastrar </span></button>
+        </div>
+      </div>
+
+      <!-- Lista de Clientes -->
+      <div class="list-group">
+
+        <a class="list-group-item list-group-item-action flex-column align-items-start" *ngFor="let cliente of listaClientes | pesquisarFilter:pesquisar">
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">{{cliente.processo}}</h5>
+
+            <small>{{cliente.tipo}}</small>
+
+
+          </div>
+          <p class="mb-1"><span class="color">Reclamante:</span> {{cliente.reclamante}}</p>
+          <p class="mb-1"><span class="color">Reclamada:</span> {{cliente.reclamada}}</p>
+          <div *ngIf="cliente.isShowMore">
+            <p class="mb-1"><span class="color">Valor: </span>{{cliente.valor}}</p>
+            <p class="mb-1"><span class="color">Parcelamento:</span> {{cliente.parcelas}} x {{cliente.parcelado}}</p>
+            <!--  <p class="mb-1"><span class="color">Parcelas: </span>{{cliente.parcelas}}</p> -->
+            <p class="mb-1"><span class="color">Vencimento: </span>{{cliente.vencimento}}</p>
+            <p class="mb-1"><span class="color">Status: </span>{{cliente.status}}</p>
+          </div>
+          <div class="text-right">
+            <i (click)="editCliente(cliente)" class="fa fa-pencil pr-4" aria-hidden="true" style="font-size: 20px;"></i>
+            <i (click)="excluirCliente(cliente)" class="fa fa-trash" aria-hidden="true" style="font-size: 20px;"></i>
+          </div>
+
+          <span class="show-more">
+            <a (click)="cliente.isShowMore = !cliente.isShowMore">{{!cliente.isShowMore? 'ver mais' : 'ver menos'}}</a>
+
+          </span>
+        </a>
+
+      </div>
     </div>
   </div>
 </div>
 
 
 
+<app-login *ngIf="login"></app-login>
+
 <!-- Cadastro de clientes -->
-<app-cad-clientes *ngIf="this.cadastroCliente" [cadClientes]="this.objCliente"></app-cad-clientes>
+<app-cad-clientes *ngIf="cadastroCliente" [cadClientes]="objCliente"></app-cad-clientes>
